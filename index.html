@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joyeux Anniversaire Otaku!</title>
+  <style>
+    /* Police par défaut et réinitialisation */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      background: #111;
+      line-height: 1.6;
+    }
+    /* Header avec navigation fixe */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 20px;
+      z-index: 1000;
+    }
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    header nav a:hover {
+      color: #ff6f91;
+    }
+    /* Section Hero avec background dynamique */
+    .hero {
+      height: 100vh;
+      background: url('https://source.unsplash.com/1600x900/?anime') center/cover fixed;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.5rem;
+    }
+    /* Sections standards */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #ff6f91;
+    }
+    /* Galerie responsive en grille */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 0 20px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    /* Section Surprise avec fond tout en douceur */
+    .surprise {
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      color: #333;
+    }
+    .surprise button {
+      background: #ff6f91;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+    .surprise button:hover {
+      background: #ffb3c1;
+    }
+    .hidden-message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+    /* Footer */
+    footer {
+      background: #222;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9em;
+    }
+    /* Pour espacer le contenu quand le header est fixe */
+    .spacer {
+      height: 60px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <a href="#accueil">Accueil</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#surprise">Surprise</a>
+    </nav>
+  </header>
+
+  <!-- Espace pour le header fixe -->
+  <div class="spacer"></div>
+
+  <!-- Section Accueil / Hero -->
+  <section class="hero" id="accueil">
+    <div class="hero-content">
+      <h1>Joyeux Anniversaire Yasmine !</h1>
+      <p>Pour une fan d'animé exceptionnelle</p>
+    </div>
+  </section>
+
+  <!-- Section Galerie -->
+  <section id="galerie">
+    <h2>Galerie d'Inspiration</h2>
+    <div class="gallery">
+      
+    <!-- Image personnalisée locale -->
+    <img src="media/1.jpg" alt="Photo personnalisée">
+    <img src="media/2.jpg" alt="Photo personnalisée">
+
+    <!-- Vidéo locale -->
+    <video width="100%" controls>
+      <source src="media/v1.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la lecture de vidéos.
+    </video>
+
+    <!-- Autres images -->
+       <img src="media/photo1.jpg" alt="Photo personnalisée">
+    <img src="media/photo1.jpg" alt="Photo personnalisée">
+
+  </div>
+</section>
+
+  <!-- Section Surprise avec message secret et citation -->
+  <section class="surprise" id="surprise">
+    <h2>Ton Message Secret</h2>
+    <p>Clique sur le bouton pour révéler une surprise spécialement pour toi !</p>
+    <button onclick="revelerMessage()">Révéler le Message</button>
+    <div class="hidden-message" id="hiddenMessage"></div>
+
+    <h3 style="margin-top:40px;">Cadeau Bonus : Citation Anime</h3>
+    <p id="animeQuote">Clique sur le bouton ci-dessous pour découvrir une citation inspirante.</p>
+    <button onclick="afficherCitation()">Afficher une Citation</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Fait avec amour par Elie - Joyeux Anniversaire !</p>
+  </footer>
+
+  <!-- JavaScript pour les interactions -->
+  <script>
+    // Fonction pour révéler ou masquer le message secret
+    function revelerMessage() {
+      const hiddenMessage = document.getElementById('hiddenMessage');
+      if (hiddenMessage.style.display === "none" || hiddenMessage.style.display === "") {
+        hiddenMessage.style.display = "block";
+        hiddenMessage.innerHTML = "Tu es exceptionnelle, unique, et ton sourire illumine le monde. Profite de cette journée comme de la magie d'un animé, avec passion et émerveillement. surtout laisse cette maudite infirmière !";
+      } else {
+        hiddenMessage.style.display = "none";
+      }
+    }
+
+    // Tableau de citations inspirées d'univers anime
+    const quotes = [
+      "« Même dans l’obscurité, il y a toujours une lumière qui brille. »",
+      "« La volonté de continuer est ce qui nous définit. »",
+      "« Chaque instant est un nouveau départ. »",
+      "« Crois en toi, comme tu crois en tes rêves. »",
+      "« L’amitié est une force qui transcende toutes les frontières. »"
+    ];
+
+    // Fonction pour afficher une citation aléatoire
+    function afficherCitation() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById("animeQuote").innerHTML = quotes[randomIndex];
+    }
+  </script>
+</body>
+</html>
